@@ -1,4 +1,4 @@
 Participants:
 
--Salvador Diaz\n
+-Salvador Diaz <br>
 -Santiago Negreyra
