@@ -10,7 +10,6 @@
 int main(void)
 {
 
-    _printf("Let's try to printf a simple sentence.");
-    _printf("Let's try to printf a simple sentence.");
+    _printf("Hola%");
     return (0);
 }
