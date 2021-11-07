@@ -10,6 +10,6 @@
 int main(void)
 {
 
-    _printf("Hola%");
+    _printf("Hola%c", 'A');
     return (0);
 }

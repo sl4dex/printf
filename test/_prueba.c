@@ -39,18 +39,21 @@ int _printf(const char *format, ...)
 		}
 		else 
 		{
-				_puts("wtf\n");
-			while(conv[j].a[0])
-			{
-				if (!conv[j].a[0])
+				if(!format[i + 1])
 				{
 					_puts("Error");
-					return (1);
-				}	
-				else if (format[i + 1] && conv[j].a[0] == format[i + 1])
+                                        return (1);
+				}
+			while(conv[j].a[0])
+			{
+				if (conv[j].a[0] == format[i + 1])
 				{
 					conv[j].f(list, final, copy);
 					break;
+				} else if (j == 1)
+				{
+					_puts("Error");
+                                        return (1);
 				}
 				else		
 					j++;
