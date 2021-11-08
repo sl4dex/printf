@@ -13,7 +13,7 @@
 int _printf(const char *format, ...)
 {
 	int i, j = 0, len = 0;
-	char buffer[1024], c = 10;
+	char buffer[1024];
 	va_list list;
 
 	va_start(list, format);
@@ -46,7 +46,6 @@ int _printf(const char *format, ...)
 		}
 	}
 	write(1, buffer, len);
-	write(1, &c, 1);
 	return (len);
 }
 /**
