@@ -16,62 +16,70 @@ conversion conv[] =
 */
 int _printf(const char *format, ...)
 {
-	int i = 0, j = 0;
-	char *copy, *final;
-	va_list list;
- 
-	va_start(list, format);
-	copy = malloc(1);
-	final = malloc(1024);		
+        int i = 0, j = 0, len = 0;
+        char buffer[1024], c = 10;
+        va_list list;
+
+        va_start(list, format);
 	while (format && format[i])
 	{
-		if (format[i] != '%')
+		if (format[i] == '%')
 		{
-			copy[0] = format[i];
-			final = str_concat(final, copy);
-			i++;
-		}
-		else if (format[i] == '%' && format[i + 1] && format[i + 1] == '%')
-		{
-				copy[0] = format[i];
-				i += 2;
-                		final = str_concat(final, copy);
-		}
-		else 
-		{
-				if(!format[i + 1])
-				{
-					_puts("Error");
-                                        return (1);
-				}
-			while(conv[j].a[0])
+			if (format[i + 1] && format[i + 1] == '%')
 			{
-				if (conv[j].a[0] == format[i + 1])
-				{
-					conv[j].f(list, final, copy);
-					break;
-				} else if (j == 1)
-				{
-					_puts("Error");
-                                        return (1);
-				}
-				else		
-					j++;
-			}	
+				buffer[len] = format[i];
+				len++;
+				i += 2;
+			} 
+			else if (!format[i + 1])
+				i++;
+			else
+			{
+				while(format[i + 1] && conv[j].a[0])
+                        	{
+                                	if (conv[j].a[0] == format[i + 1])
+                               	 	{	
+                                        	len = conv[j].f(list, &buffer[len], len);
+                                        	i += 2;
+                                        	break;
+                                	}
+                                	else if (j == 1)
+					{
+                                        	i++;
+						break;
+					}
+					else
+ 						j++;
+                        	}
+				j = 0;
+			}
+
 		}
-	}	
-	write(1, final, i);
-	_putchar(10);
+		else
+		{
+			buffer[len] = format[i];
+			i++;
+			len++;
+		}
+	}
+	write(1, buffer, len);
+	write(1, &c, 1);
 	return(0);
 }
-void _puts_chr(va_list list, char *final, char *copy)
+int _puts_chr(va_list list, char *buffer, int len)
 {
-       	copy[0] = va_arg(list, int);
-        final = str_concat(final, copy);
+       	*buffer = va_arg(list, int);
+	len++;
+	return (len);
 }
-void _puts_str(va_list list, char *final, char *copy)
+int _puts_str(va_list list, char *buffer, int len)
 {
-	/* correfit */
-        copy[0] = 'a';
-        final = str_concat(final, va_arg(list, char *));
+	int i;
+	char *str = va_arg(list, char *);
+	for(i = 0; i < _strlen(str); i++)
+	{
+		buffer[i] = str[i];
+		len++;
+	}
+	return (len);
 }
