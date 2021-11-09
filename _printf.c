@@ -49,10 +49,8 @@ int _printf(const char *format, ...)
 		}
 		va_end(list);
 		return (len);
-	} else
-	{
-		return (-1);
 	}
+		return (-1);
 }
 /**
  * options - Selects format line
@@ -72,9 +70,6 @@ formatOp options(int pos)
 /**
  * buf_chr - adds char to buffer
  * @list: argument list
- * @buffer: buffer containing the text
- * @len: length of text in buffer
- *
  * Return: length of buffer
  */
 int buf_chr(va_list list)
@@ -84,14 +79,13 @@ int buf_chr(va_list list)
 /**
  * buf_str - adds string to buffer
  * @list: argument list
- * @buffer: buffer containing the text
- * @len: length of text in buffer
  *
  * Return: length of buffer
  */
 int buf_str(va_list list)
-{	
+{
 	char *str = va_arg(list, char *);
+
 	if (str)
 	{
 	int i, len = 0;
