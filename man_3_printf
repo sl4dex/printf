@@ -42,6 +42,8 @@ FORMAT interpreted sequences are:
 - %d %i	int format
 .IP
 - %b    unsigned int to binary format
+.IP
+- %r    reverse string format
 
 .SH AUTHOR
 Written by Salvador Diaz & Santiago Negreyra
