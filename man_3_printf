@@ -1,0 +1,52 @@
+." Process this file with
+." groff -man -Tascii _printf.1
+."
+.TH _printf(1)
+
+.SH NAME
+.B _printf
+- format and print data 
+
+.SH SYNOPSIS
+#include "main.h"
+
+.B _printf
+.RB ( FORMAT )
+.RB [ ARGUMENT ] ... 
+
+.SH DESCRIPTION
+Print ARGUMENT(s) according to FORMAT
+
+.B Format of the format string
+       The format string is a character string composed
+       of zero or more directives: ordinary characters (not %), which
+       are copied unchanged to the output stream; and conversion
+       specifications, each of which results in fetching zero or more
+       subsequent arguments.  Each conversion specification is
+       introduced by the character %, and ends with a conversion
+       specifier.
+
+       The arguments must correspond properly with the conversion specifier. 
+       By default, the arguments are used in the order given, where each 
+       conversion specifier asks for the next argument.
+
+FORMAT interpreted sequences are:
+
+.IP
+- %%    a single %
+.IP
+- %c    char format
+.IP
+- %s    string format
+.IP
+- %d %i	int format
+.IP
+- %b    unsigned int to binary format
+
+.SH AUTHOR
+Written by Salvador Diaz & Santiago Negreyra
+.SH COPYRIGHT
+.PP
+Copyright 2021 Holberton Academy. All rights reserved
+.SH SEE ALSO
+printf(1)
