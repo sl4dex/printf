@@ -37,16 +37,13 @@ int _printf(const char *format, ...)
 						break;
 					}
 				}
-				if (!format[i + 1])
-				return (-1);
-				else 
-				{
-					buffer[len] = '%';
-					len++;
-				}
 				j = 0;
+				if (format[i] == '%' && !format[i + 1])
+				{
+				write(1, buffer, len);
+				return (-1);
+				}
 		}
-
 		else
 		{
 			buffer[len] = format[i];
