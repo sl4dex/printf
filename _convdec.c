@@ -7,19 +7,21 @@
  */
 int conv_decimal(int i)
 {
+	unsigned int aux_i;
 	int len = 0;
 
 	if (i < 0)
 	{
 		_putchar('-');
+		aux_i = -i;
 		len++;
-		i = -i;
-	}
-	if (i / 10)
+	} else
+		aux_i = i;
+	if (aux_i / 10)
 	{
-		len += conv_decimal(i / 10);
+		len += conv_decimal(aux_i / 10);
 	}
-	_putchar((i % 10) + '0');
+	_putchar((aux_i % 10) + '0');
 	len++;
 	return (len);
 }
