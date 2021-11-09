@@ -12,9 +12,9 @@
 */
 int _printf(const char *format, ...)
 {
-	int i, j = 0, len = 0;
+	int i, j, len = 0;
 	va_list list;
-	
+
 	if (format)
 	{
 		va_start(list, format);
@@ -26,11 +26,11 @@ int _printf(const char *format, ...)
 			{
 				if (format[i + 1] && format[i + 1] == '%')
 				{
-					len +=_putchar('%');
+					len += _putchar('%');
 					i++;
 					continue;
 				}
-				for (; format[i + 1] && j <= 1 && options(j).a[0]; j++)
+				for (j = 0; format[i + 1] && options(j).a[0]; j++)
 				{
 					if (options(j).a[0] == format[i + 1])
 					{
@@ -39,13 +39,15 @@ int _printf(const char *format, ...)
 						break;
 					}
 				}
-				j = 0;
+				if (!options(j).a[0])
+				len += _putchar(format[i]);
 			}
 			else
 			{
 				len += _putchar(format[i]);
 			}
 		}
+		va_end(list);
 		return (len);
 	} else
 	{
@@ -63,7 +65,7 @@ formatOp options(int pos)
 	formatOp fmt[] = {
 		{"c", buf_chr},
 		{"s", buf_str},
-		{NULL, NULL}
+		{"\0", NULL}
 	};
 	return (fmt[pos]);
 }
@@ -100,5 +102,6 @@ int buf_str(va_list list)
 	}
 	return (len);
 	}
+	else
 	return (_printf("(null)"));
 }
