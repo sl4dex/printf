@@ -15,12 +15,13 @@
 typedef struct formatOp
 {
 	char *a;
-	int (*f)(va_list, char *, int);
+	int (*f)(va_list);
 } formatOp;
+int _putchar(char c);
 int _strlen(char *);
 int _putchar(char c);
 int _printf(const char *format, ...);
-int buf_chr(va_list, char *, int);
-int buf_str(va_list, char *, int);
+int buf_chr(va_list);
+int buf_str(va_list);
 formatOp options(int);
 #endif

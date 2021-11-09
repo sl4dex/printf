@@ -13,47 +13,44 @@
 int _printf(const char *format, ...)
 {
 	int i, j = 0, len = 0;
-	char buffer[1024];
 	va_list list;
-
-	va_start(list, format);
-	for (i = 0; format && format[i]; i++)
+	
+	if (format)
 	{
-		if (format[i] == '%')
+		va_start(list, format);
+		for (i = 0; format[i]; i++)
 		{
-			if (format[i + 1] && format[i + 1] == '%')
+			if (list == NULL || (format[i] == '%' && format[i + 1] == '\0'))
+			return (-1);
+			if (format[i] == '%')
 			{
-				buffer[len] = format[i];
-				len++;
-				i++;
-				continue;
-			}
+				if (format[i + 1] && format[i + 1] == '%')
+				{
+					len +=_putchar('%');
+					i++;
+					continue;
+				}
 				for (; format[i + 1] && j <= 1 && options(j).a[0]; j++)
 				{
 					if (options(j).a[0] == format[i + 1])
 					{
-						len = options(j).f(list, &buffer[len], len);
+						len += options(j).f(list);
 						i++;
 						break;
 					}
 				}
 				j = 0;
-				if (format[i] == '%' && !format[i + 1])
-				{
-				write(1, buffer, len);
-				return (-1);
-				}
+			}
+			else
+			{
+				len += _putchar(format[i]);
+			}
 		}
-		else
-		{
-			buffer[len] = format[i];
-			len++;
-		}
+		return (len);
+	} else
+	{
+		return (-1);
 	}
-	if (!format)
-	return (-1);
-	write(1, buffer, len);
-	return (len);
 }
 /**
  * options - Selects format line
@@ -78,11 +75,9 @@ formatOp options(int pos)
  *
  * Return: length of buffer
  */
-int buf_chr(va_list list, char *buffer, int len)
+int buf_chr(va_list list)
 {
-	*buffer = va_arg(list, int);
-	len++;
-	return (len);
+	return (_putchar(va_arg(list, int)));
 }
 /**
  * buf_str - adds string to buffer
@@ -92,15 +87,18 @@ int buf_chr(va_list list, char *buffer, int len)
  *
  * Return: length of buffer
  */
-int buf_str(va_list list, char *buffer, int len)
-{
-	int i;
+int buf_str(va_list list)
+{	
 	char *str = va_arg(list, char *);
+	if (str)
+	{
+	int i, len = 0;
 
 	for (i = 0; i < _strlen(str); i++)
 	{
-		buffer[i] = str[i];
-		len++;
+		len += _putchar(str[i]);
 	}
 	return (len);
+	}
+	return (_printf("(null)"));
 }
