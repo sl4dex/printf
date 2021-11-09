@@ -23,18 +23,13 @@ int _printf(const char *format, ...)
 		{
 			if (format[i + 1] && format[i + 1] == '%')
 			{
-				buffer[len] = format[i];
-				len++;
-				i++;
-				continue;
+				buffer[len] = format[i], len++, i++, continue;
 			}
 				for (; format[i + 1] && j <= 1 && options(j).a[0]; j++)
 				{
 					if (options(j).a[0] == format[i + 1])
 					{
-						len = options(j).f(list, &buffer[len], len);
-						i++;
-						break;
+						len = options(j).f(list, &buffer[len], len), i++, break;
 					}
 				}
 				j = 0;
