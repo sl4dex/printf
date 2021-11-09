@@ -24,7 +24,7 @@ int _printf(const char *format, ...)
 			return (-1);
 			if (format[i] == '%')
 			{
-				if (format[i + 1] == '%')
+				if (format[i + 1] && format[i + 1] == '%')
 				{
 					len += _putchar('%');
 					i++;
@@ -63,8 +63,6 @@ formatOp options(int pos)
 	formatOp fmt[] = {
 		{"c", buf_chr},
 		{"s", buf_str},
-		{"i", buf_int},
-		{"d", buf_dec},
 		{"\0", NULL}
 	};
 	return (fmt[pos]);

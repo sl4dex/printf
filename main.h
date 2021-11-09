@@ -20,8 +20,10 @@ typedef struct formatOp
 int _putchar(char c);
 int _strlen(char *);
 int _putchar(char c);
-int _printf(const char *format, ...);
+int _printf(const char *format, ...);int buf_int(va_list);
+int buf_dec(va_list);
 int buf_chr(va_list);
 int buf_str(va_list);
+int conv_decimal(int);
 formatOp options(int);
 #endif
