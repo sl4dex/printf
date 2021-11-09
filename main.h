@@ -6,7 +6,7 @@
 #include <string.h>
 #include <unistd.h>
 /**
- * struct conversion - Struct for format specifications in _printf
+ * struct formatOp - Struct for format specifications in _printf
  * @a: format specification char
  * @f: Corresponding function for format
  *
