@@ -35,5 +35,7 @@ int dec_to_hex(va_list);
 int print_hex(int n);
 int dec_to_Hex(va_list);
 int print_Hex(int n);
+int dec_to_oct(va_list);
+int print_oct(int n);
 formatOp options(int);
 #endif

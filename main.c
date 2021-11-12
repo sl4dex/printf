@@ -3,7 +3,7 @@
 int main(void)
 {
 	int len;
-	len =_printf("cinco%u %u %u %u", 0, 1, 123123, -1);
+	len =_printf("cinco%o %o %o", 0, 1, 125);
 	printf("len = %d", len);
 	return (0);
 }

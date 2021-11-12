@@ -71,6 +71,7 @@ formatOp options(int pos)
 		{"x", dec_to_hex},
 		{"X", dec_to_Hex},
 		{"u", buf_Uint},
+		{"o", dec_to_oct},
 		{"\0", NULL}
 	};
 	return (fmt[pos]);
