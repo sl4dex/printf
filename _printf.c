@@ -65,6 +65,7 @@ formatOp options(int pos)
 		{"s", buf_str},
 		{"i", buf_int},
 		{"d", buf_dec},
+		{"R", rot_13},
 		{"\0", NULL}
 	};
 	return (fmt[pos]);

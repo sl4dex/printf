@@ -26,5 +26,6 @@ int buf_dec(va_list);
 int buf_chr(va_list);
 int buf_str(va_list);
 int conv_decimal(int);
+int rot_13(va_list);
 formatOp options(int);
 #endif
