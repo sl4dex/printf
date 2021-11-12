@@ -25,10 +25,15 @@ int buf_int(va_list);
 int buf_dec(va_list);
 int buf_chr(va_list);
 int buf_str(va_list);
+int buf_Uint(va_list list);
 int conv_decimal(int);
 int rot_13(va_list);
 int dec_to_bin(va_list);
 int print_rev(va_list list);
 int print_bin(int n);
+int dec_to_hex(va_list);
+int print_hex(int n);
+int dec_to_Hex(va_list);
+int print_Hex(int n);
 formatOp options(int);
 #endif

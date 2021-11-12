@@ -14,6 +14,12 @@ int dec_to_bin(va_list lis)
 	return (print_bin(n));
 
 }
+/**
+ * print_bin - prints the number in binary
+ * @n: decimal num
+ *
+ * Return: length of binary num
+ */
 int print_bin(int n)
 {
 	int len = 0;

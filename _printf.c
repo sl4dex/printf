@@ -68,6 +68,9 @@ formatOp options(int pos)
 		{"R", rot_13},
 		{"b", dec_to_bin},
 		{"r", print_rev},
+		{"x", dec_to_hex},
+		{"X", dec_to_Hex},
+		{"u", buf_Uint},
 		{"\0", NULL}
 	};
 	return (fmt[pos]);
