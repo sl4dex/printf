@@ -28,5 +28,6 @@ int buf_str(va_list);
 int conv_decimal(int);
 int dec_to_bin(va_list);
 int print_rev(va_list list);
+int print_bin(int n);
 formatOp options(int);
 #endif

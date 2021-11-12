@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 /**
  * dec_to_bin - converts decimal number to binary
  * @lis: argument list
@@ -7,20 +8,25 @@
  */
 int dec_to_bin(va_list lis)
 {
-	int bin[32];
-	int i, j, dec;
+	int n;
 
-	i = 0;
-	dec = va_arg(lis, int);
-	if (!dec)
-		_putchar ('0');
-	for (; dec > 0; i++)
+	n = va_arg(lis, int);
+	return (print_bin(n));
+
+}
+int print_bin(int n)
+{
+	int len = 0;
+
+	if (n < 0)
 	{
-		bin[i] = dec % 2;
-		dec /= 2;
+		len++;
+		_putchar('0');
+		n = -n;
 	}
-	i--;
-	for (j = i; j >= 0; j--)
-		_putchar(bin[j] + '0');
-	return (++i);
+	if (n / 2 != 0)
+		len += print_bin(n / 2);
+	_putchar(n % 2 + '0');
+	len++;
+	return (len);
 }
